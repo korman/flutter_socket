@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 
+Socket? socket;
+Stream<List<int>>? streams;
+
 void main() async {
-  await Socket.connect('127.0.0.1', 9898).then((Socket socket) {});
+  await Socket.connect('127.0.0.1', 9898).then((Socket sock) {
+    socket = sock;
+    streams = sock.asBroadcastStream();
+
+    if (streams != null) {
+      streams!.listen((List<int> event) {});
+    }
+
+    if (socket != null) {
+      socket!.write('object');
+    }
+  });
 
   runApp(const MyApp());
 }
