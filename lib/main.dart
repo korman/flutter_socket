@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 
-void main() {
+void main() async {
+  await Socket.connect('127.0.0.1', 9898).then((Socket socket) {});
+
   runApp(const MyApp());
 }
 
