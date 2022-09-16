@@ -5,7 +5,7 @@ Socket? socket;
 Stream<List<int>>? streams;
 
 void main() async {
-  await Socket.connect('127.0.0.1', 9898).then((Socket sock) {
+  await Socket.connect('124.222.21.34', 9898).then((Socket sock) {
     socket = sock;
     streams = sock.asBroadcastStream();
 
