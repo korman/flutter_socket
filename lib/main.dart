@@ -1,5 +1,9 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_socket/pb/conn.pb.dart';
 import 'dart:io';
+import 'dart:typed_data';
 
 Socket? socket;
 Stream<List<int>>? streams;
@@ -13,8 +17,23 @@ void main() async {
       streams!.listen((List<int> event) {});
     }
 
+    SayReq req = SayReq(text: '压脉带');
+    var writeBuffer = req.writeToBuffer();
+    Uint8List buffer = Uint8List(8 + writeBuffer.length);
+    buffer[0] = 0;
+    buffer[1] = 0;
+    buffer[2] = 0;
+    buffer[3] = 0;
+    buffer[4] = 0;
+    buffer[5] = 0;
+    buffer[6] = 0;
+    buffer[7] = writeBuffer.length;
+
+    for (int i = 0; i < writeBuffer.length; i++) {
+      buffer[8 + i] = writeBuffer[i];
+    }
     if (socket != null) {
-      socket!.write('object');
+      socket!.write(writeBuffer);
     }
   });
 
