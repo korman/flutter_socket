@@ -9,7 +9,7 @@ Socket? socket;
 Stream<List<int>>? streams;
 
 void main() async {
-  await Socket.connect('124.222.21.34', 9898).then((Socket sock) {
+  await Socket.connect('127.0.0.1', 9898).then((Socket sock) {
     socket = sock;
     streams = sock.asBroadcastStream();
 
@@ -19,21 +19,13 @@ void main() async {
 
     SayReq req = SayReq(text: '压脉带');
     var writeBuffer = req.writeToBuffer();
-    Uint8List buffer = Uint8List(8 + writeBuffer.length);
-    buffer[0] = 0;
-    buffer[1] = 0;
-    buffer[2] = 0;
-    buffer[3] = 0;
-    buffer[4] = 0;
-    buffer[5] = 0;
-    buffer[6] = 0;
-    buffer[7] = writeBuffer.length;
 
-    for (int i = 0; i < writeBuffer.length; i++) {
-      buffer[8 + i] = writeBuffer[i];
-    }
+    ByteData bydata = ByteData(8);
+    bydata.setUint64(0, writeBuffer.length);
+
+    var msg = bydata.buffer.asUint8List() + writeBuffer;
     if (socket != null) {
-      socket!.write(writeBuffer);
+      socket!.add(msg);
     }
   });
 
