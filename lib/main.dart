@@ -9,25 +9,25 @@ Socket? socket;
 Stream<List<int>>? streams;
 
 void main() async {
-  await Socket.connect('127.0.0.1', 9898).then((Socket sock) {
-    socket = sock;
-    streams = sock.asBroadcastStream();
+  // await Socket.connect('127.0.0.1', 9898).then((Socket sock) {
+  //   socket = sock;
+  //   streams = sock.asBroadcastStream();
 
-    if (streams != null) {
-      streams!.listen((List<int> event) {});
-    }
+  //   if (streams != null) {
+  //     streams!.listen((List<int> event) {});
+  //   }
 
-    SayReq req = SayReq(text: '压脉带');
-    var writeBuffer = req.writeToBuffer();
+  //   SayReq req = SayReq(text: '压脉带');
+  //   var writeBuffer = req.writeToBuffer();
 
-    ByteData bydata = ByteData(8);
-    bydata.setUint64(0, writeBuffer.length);
+  //   ByteData bydata = ByteData(8);
+  //   bydata.setUint64(0, writeBuffer.length);
 
-    var msg = bydata.buffer.asUint8List() + writeBuffer;
-    if (socket != null) {
-      socket!.add(msg);
-    }
-  });
+  //   var msg = bydata.buffer.asUint8List() + writeBuffer;
+  //   if (socket != null) {
+  //     socket!.add(msg);
+  //   }
+  // });
 
   runApp(const MyApp());
 }
@@ -91,6 +91,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Table table = Table(
+      border: TableBorder.all(),
+      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+      defaultColumnWidth: const FixedColumnWidth(80),
+      children: [
+        TableRow(children: [
+          buildItem("1", Colors.redAccent),
+          buildItem("2", Colors.orangeAccent),
+          buildItem("3", Colors.yellowAccent),
+          buildItem("4", Colors.greenAccent)
+        ]),
+        TableRow(children: [
+          buildItem("5", Colors.greenAccent),
+          buildItem("6", Colors.yellowAccent),
+          buildItem("7", Colors.orangeAccent),
+          buildItem("8", Colors.redAccent)
+        ])
+      ],
+    );
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -103,41 +123,22 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
+      body: table,
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  buildItem(String content, Color backgroundColor) {
+    return Container(
+      width: 100,
+      height: 100,
+      alignment: Alignment.center,
+      color: backgroundColor,
+      child: Text(content),
     );
   }
 }
