@@ -2,30 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_socket/pb/conn.pb.dart';
 import 'dart:io';
 import 'dart:typed_data';
+import 'rename_dialog.dart';
 
 Socket? socket;
 Stream<List<int>>? streams;
 
 void main() async {
-  await Socket.connect('127.0.0.1', 9898).then((Socket sock) {
-    socket = sock;
-    streams = sock.asBroadcastStream();
+  // await Socket.connect('10.30.20.211', 9898).then((Socket sock) {
+  //   socket = sock;
+  //   streams = sock.asBroadcastStream();
 
-    if (streams != null) {
-      streams!.listen((List<int> event) {});
-    }
+  //   if (streams != null) {
+  //     streams!.listen((List<int> event) {});
+  //   }
 
-    SayReq req = SayReq(text: '压脉带');
-    var writeBuffer = req.writeToBuffer();
+  //   SayReq req = SayReq(text: '压脉带');
+  //   var writeBuffer = req.writeToBuffer();
 
-    ByteData bydata = ByteData(8);
-    bydata.setUint64(0, writeBuffer.length);
+  //   ByteData bydata = ByteData(16);
+  //   bydata.setUint64(0, writeBuffer.length);
+  //   bydata.setUint64(8, 1);
 
-    var msg = bydata.buffer.asUint8List() + writeBuffer;
-    if (socket != null) {
-      socket!.add(msg);
-    }
-  });
+  //   var msg = bydata.buffer.asUint8List() + writeBuffer;
+  //   if (socket != null) {
+  //     socket!.add(msg);
+  //   }
+  // });
 
   runApp(const MyApp());
 }
@@ -75,8 +77,28 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
-    setState(() {});
+    setState(() {
+      showDialog(
+          barrierDismissible: false,
+          context: context,
+          builder: (context) {
+            return RenameDialog(
+              contentWidget: RenameDialogContent(
+                title: "请输入新的家庭名称",
+                okBtnTap: () {
+                  print(
+                    "输入框中的文字为:${tec.text}",
+                  );
+                },
+                vc: tec,
+                cancelBtnTap: () {},
+              ),
+            );
+          });
+    });
   }
+
+  TextEditingController tec = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -130,4 +152,15 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Text(content),
     );
   }
+}
+
+class RenameDialog extends AlertDialog {
+  RenameDialog({required Widget contentWidget})
+      : super(
+          content: contentWidget,
+          contentPadding: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+              side: const BorderSide(color: Colors.blue, width: 3)),
+        );
 }
