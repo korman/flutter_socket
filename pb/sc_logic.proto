@@ -6,9 +6,8 @@ package server;
 
 import "pb/global_define.proto";
 
-message OtherLockNode { Node lockNode = 1; }
+message OtherLockNode { repeated Node lockNode = 1; }
 
 message OtherInputText {
-  Node inputNode = 1;
-  string inputText = 2;
+  repeated InputText inputText = 1;
 }

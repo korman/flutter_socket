@@ -8,3 +8,8 @@ message Node {
   int32 x = 1;
   int32 y = 2;
 }
+
+message InputText {
+  string text = 1;
+  Node inputNode = 2;
+}
