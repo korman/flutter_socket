@@ -8,7 +8,6 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-
 @$core.Deprecated('Use sayReqDescriptor instead')
 const SayReq$json = const {
   '1': 'SayReq',
@@ -18,8 +17,7 @@ const SayReq$json = const {
 };
 
 /// Descriptor for `SayReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List sayReqDescriptor =
-    $convert.base64Decode('CgZTYXlSZXESEgoEdGV4dBgBIAEoCVIEdGV4dA==');
+final $typed_data.Uint8List sayReqDescriptor = $convert.base64Decode('CgZTYXlSZXESEgoEdGV4dBgBIAEoCVIEdGV4dA==');
 @$core.Deprecated('Use sayReplyDescriptor instead')
 const SayReply$json = const {
   '1': 'SayReply',
@@ -29,5 +27,4 @@ const SayReply$json = const {
 };
 
 /// Descriptor for `SayReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List sayReplyDescriptor =
-    $convert.base64Decode('CghTYXlSZXBseRISCgR0ZXh0GAEgASgJUgR0ZXh0');
+final $typed_data.Uint8List sayReplyDescriptor = $convert.base64Decode('CghTYXlSZXBseRISCgR0ZXh0GAEgASgJUgR0ZXh0');
