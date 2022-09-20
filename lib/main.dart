@@ -9,25 +9,25 @@ Socket? socket;
 Stream<List<int>>? streams;
 
 void main() async {
-  // await Socket.connect('127.0.0.1', 9898).then((Socket sock) {
-  //   socket = sock;
-  //   streams = sock.asBroadcastStream();
+  await Socket.connect('127.0.0.1', 9898).then((Socket sock) {
+    socket = sock;
+    streams = sock.asBroadcastStream();
 
-  //   if (streams != null) {
-  //     streams!.listen((List<int> event) {});
-  //   }
+    if (streams != null) {
+      streams!.listen((List<int> event) {});
+    }
 
-  //   SayReq req = SayReq(text: '压脉带');
-  //   var writeBuffer = req.writeToBuffer();
+    SayReq req = SayReq(text: '压脉带');
+    var writeBuffer = req.writeToBuffer();
 
-  //   ByteData bydata = ByteData(8);
-  //   bydata.setUint64(0, writeBuffer.length);
+    ByteData bydata = ByteData(8);
+    bydata.setUint64(0, writeBuffer.length);
 
-  //   var msg = bydata.buffer.asUint8List() + writeBuffer;
-  //   if (socket != null) {
-  //     socket!.add(msg);
-  //   }
-  // });
+    var msg = bydata.buffer.asUint8List() + writeBuffer;
+    if (socket != null) {
+      socket!.add(msg);
+    }
+  });
 
   runApp(const MyApp());
 }
