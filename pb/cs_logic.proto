@@ -34,8 +34,7 @@ message LockNodeReply {
 }
 
 message InputTextReq {
-  string text = 1;
-  Node inputNode = 2;
+  InputText inputText = 1;
 }
 
 message InputTextReply {
