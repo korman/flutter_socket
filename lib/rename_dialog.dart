@@ -26,7 +26,7 @@ class _RenameDialogContentState extends State<RenameDialogContent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 20),
         height: 200,
         width: 10000,
         alignment: Alignment.bottomCenter,
@@ -36,15 +36,15 @@ class _RenameDialogContentState extends State<RenameDialogContent> {
                 alignment: Alignment.center,
                 child: Text(
                   widget.title,
-                  style: TextStyle(color: Colors.grey),
+                  style: const TextStyle(color: Colors.grey),
                 )),
-            Spacer(),
+            const Spacer(),
             Padding(
-              padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+              padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
               child: TextField(
-                style: TextStyle(color: Colors.black87),
+                style: const TextStyle(color: Colors.black87),
                 controller: widget.vc,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.blue),
                     ),
