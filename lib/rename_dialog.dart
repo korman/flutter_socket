@@ -56,7 +56,7 @@ class _RenameDialogContentState extends State<RenameDialogContent> {
             Container(
               // color: Colors.red,
               height: btnHeight,
-              margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
+              margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
               child: Column(
                 children: [
                   Container(
