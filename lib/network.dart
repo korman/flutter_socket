@@ -22,26 +22,37 @@ class NetworkManager {
   var dataStack = [];
 
   void start(String ip, int port) async {
-    await Socket.connect('10.30.20.211', 9898).then((Socket sock) {
+    Socket.connect('127.0.0.1', 9898).then((Socket sock) {
       socket = sock;
-      streams = sock.asBroadcastStream();
+      // streams = sock.asBroadcastStream();
 
-      if (streams != null) {
-        streams!.listen((List<int> event) {});
-      }
+      // if (streams != null) {
+      //   streams!.listen((List<int> event) {});
+      // }
 
-      SayReq req = SayReq(text: '压脉带');
-      var writeBuffer = req.writeToBuffer();
+      // SayReq req = SayReq(text: '压脉带');
+      // var writeBuffer = req.writeToBuffer();
 
-      ByteData bydata = ByteData(16);
-      bydata.setUint64(0, writeBuffer.length);
-      bydata.setUint64(8, 1);
+      // ByteData bydata = ByteData(16);
+      // bydata.setUint64(0, writeBuffer.length);
+      // bydata.setUint64(8, 1);
 
-      var msg = bydata.buffer.asUint8List() + writeBuffer;
-      if (socket != null) {
-        socket!.add(msg);
-      }
+      // var msg = bydata.buffer.asUint8List() + writeBuffer;
+      // if (socket != null) {
+      //   socket!.add(msg);
+      // }
+
+      socket!.listen(onData,
+          onError: onError, onDone: onDone, cancelOnError: false);
     });
+  }
+
+  void onError() {}
+
+  void onDone() {}
+
+  void onData(Uint8List list) {
+    print('object');
   }
 
   // 添加数据

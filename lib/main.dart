@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'rename_dialog.dart';
-import 'network.dart'
+import 'network.dart';
 
 void main() async {
+  NetworkManager.getInstance().start("127.0.0.1", 9898);
+
   runApp(const MyApp());
 }
 
