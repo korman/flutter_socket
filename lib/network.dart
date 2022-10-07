@@ -61,6 +61,12 @@ class NetworkManager {
     var byteData = cacheData.buffer.asByteData();
     var msgLen = byteData.getInt64(0);
     print(msgLen);
+    var msgId = byteData.getInt64(8);
+    print(msgId);
+    var msg = cacheData.sublist(16);
+    var sayReq = SayReq.fromBuffer(msg);
+
+    print(sayReq.text);
   }
 
   // 添加数据
