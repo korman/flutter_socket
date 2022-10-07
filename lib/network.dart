@@ -24,35 +24,43 @@ class NetworkManager {
   void start(String ip, int port) async {
     Socket.connect('127.0.0.1', 9898).then((Socket sock) {
       socket = sock;
-      // streams = sock.asBroadcastStream();
+      streams = sock.asBroadcastStream();
 
-      // if (streams != null) {
-      //   streams!.listen((List<int> event) {});
-      // }
+      if (streams != null) {
+        streams!.listen(onData, onError: onError, onDone: onDone);
+      }
 
-      // SayReq req = SayReq(text: '压脉带');
-      // var writeBuffer = req.writeToBuffer();
+      SayReq req = SayReq(text: '压脉带');
+      var writeBuffer = req.writeToBuffer();
 
-      // ByteData bydata = ByteData(16);
-      // bydata.setUint64(0, writeBuffer.length);
-      // bydata.setUint64(8, 1);
+      ByteData bydata = ByteData(16);
+      bydata.setUint64(0, writeBuffer.length);
+      bydata.setUint64(8, 1);
 
-      // var msg = bydata.buffer.asUint8List() + writeBuffer;
-      // if (socket != null) {
-      //   socket!.add(msg);
-      // }
+      var msg = bydata.buffer.asUint8List() + writeBuffer;
+      if (socket != null) {
+        socket!.add(msg);
+      }
 
-      socket!.listen(onData,
-          onError: onError, onDone: onDone, cancelOnError: false);
+      // socket!.listen(onData,
+      //     onError: onError, onDone: onDone, cancelOnError: false);
     });
   }
 
-  void onError() {}
+  void onError(Object obj, StackTrace st) {
+    print('出错了');
+  }
 
-  void onDone() {}
+  void onDone() {
+    print('On Done');
+  }
 
-  void onData(Uint8List list) {
-    print('object');
+  void onData(List<int> data) {
+    print('来消息了');
+    var cacheData = Int8List.fromList(data);
+    var byteData = cacheData.buffer.asByteData();
+    var msgLen = byteData.getInt64(0);
+    print(msgLen);
   }
 
   // 添加数据
