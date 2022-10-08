@@ -5,11 +5,11 @@ import 'dart:typed_data';
 class NetworkManager {
   // 单例模式固定格式
   NetworkManager._();
-  Socket? socket;
-  Stream<List<int>>? streams;
-  final int msgCodeByteLen = 8;
-  int msgByteLen = 8;
-  int minMsgByteLen = 16;
+  Socket? _socket;
+  Stream<List<int>>? _streams;
+  final int _msgCodeByteLen = 8;
+  int _msgByteLen = 8;
+  int _minMsgByteLen = 16;
   Uint8List _cacheData = Uint8List(0);
 
   // 单例模式固定格式
@@ -27,11 +27,11 @@ class NetworkManager {
 
   void start(String ip, int port) async {
     Socket.connect('127.0.0.1', 9898).then((Socket sock) {
-      socket = sock;
-      streams = sock.asBroadcastStream();
+      _socket = sock;
+      _streams = sock.asBroadcastStream();
 
-      if (streams != null) {
-        streams!.listen(onData, onError: onError, onDone: onDone);
+      if (_streams != null) {
+        _streams!.listen(onData, onError: onError, onDone: onDone);
       }
 
       SayReq req = SayReq(text: '压脉带');
@@ -42,12 +42,9 @@ class NetworkManager {
       bydata.setUint64(8, 1);
 
       var msg = bydata.buffer.asUint8List() + writeBuffer;
-      if (socket != null) {
-        socket!.add(msg);
+      if (_socket != null) {
+        _socket!.add(msg);
       }
-
-      // socket!.listen(onData,
-      //     onError: onError, onDone: onDone, cancelOnError: false);
     });
   }
 
@@ -64,7 +61,7 @@ class NetworkManager {
 
     print('来消息了');
 
-    while (_cacheData.length >= minMsgByteLen) {
+    while (_cacheData.length >= _minMsgByteLen) {
       var byteData = _cacheData.buffer.asByteData();
       var msgLen = byteData.getInt64(0);
 
@@ -77,11 +74,11 @@ class NetworkManager {
       print(msgId);
       print(msgLen);
 
-      int totalLen = minMsgByteLen + msgLen;
+      int totalLen = _minMsgByteLen + msgLen;
 
       var pbList;
       if (msgLen > 0) {
-        pbList = _cacheData.sublist(minMsgByteLen, totalLen);
+        pbList = _cacheData.sublist(_minMsgByteLen, totalLen);
       }
 
       _cacheData = _cacheData.sublist(totalLen, _cacheData.length);
