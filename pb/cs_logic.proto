@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option go_package = "../server";
+
+package server;
+
+import "pb/global_define.proto";
+
+enum RegisterResult {
+  REG_SUCCEEDED = 0;
+  REG_DUPLICATE = 1;
+}
+
+enum LockResult {
+  LOCK_SUCCEEDED = 0;
+  LOCK_FAILED = 1;
+}
+
+message RegisterReq {
+  string name = 1;
+  string pass = 2;
+}
+
+message RegisterReply {
+  RegisterResult result = 1;
+  string errorMessage = 2;
+}
+
+message LockNodeReq { Node lockNode = 1; }
+
+message LockNodeReply {
+  LockResult result = 1;
+  string errorMessage = 2;
+}
+
+message InputTextReq {
+  InputText inputText = 1;
+}
+
+message InputTextReply {
+  LockResult result = 1;
+  string errorMessage = 2;
+}

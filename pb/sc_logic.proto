@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option go_package = "../server";
+
+package server;
+
+import "pb/global_define.proto";
+
+message OtherLockNode { repeated Node lockNode = 1; }
+
+message OtherInputText {
+  repeated InputText inputText = 1;
+}

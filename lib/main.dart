@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'rename_dialog.dart';
+import 'network.dart';
+import 'package:flutter_socket/pb/conn.pb.dart';
+import 'package:flutter_socket/pb/cs_logic.pb.dart';
 
-void main() {
+void main() async {
+  NetworkManager.getInstance().start("127.0.0.1", 9898);
+
   runApp(const MyApp());
 }
 
@@ -48,21 +54,82 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  @override
+  void initState() {
+    NetworkManager.getInstance().registerMsgHandler(1, (byteData) {
+      var sayReq = SayReq.fromBuffer(byteData);
+      print(sayReq.text);
+
+      SayReq req = SayReq(text: 'Yes!Im Alive.');
+      var writeBuffer = req.writeToBuffer();
+
+      if (!NetworkManager.getInstance().sendMsgToServer(1, writeBuffer)) {
+        print("发送失败");
+      }
+    });
+
+    NetworkManager.getInstance().registerMsgHandler(2, (byteData) {
+      RegisterReply reply = RegisterReply.fromBuffer(byteData);
+      print(reply.result);
+    });
+
+    super.initState();
+  }
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      showDialog(
+          barrierDismissible: false,
+          context: context,
+          builder: (context) {
+            return RenameDialog(
+              contentWidget: RenameDialogContent(
+                title: "请输入新的家庭名称",
+                okBtnTap: () {
+                  print(
+                    "输入框中的文字为:${tec.text}",
+                  );
+
+                  RegisterReq req = RegisterReq(name: tec.text, pass: '123456');
+                  var writeBuffer = req.writeToBuffer();
+
+                  if (!NetworkManager.getInstance()
+                      .sendMsgToServer(2, writeBuffer)) {
+                    print("发送失败");
+                  }
+                },
+                vc: tec,
+                cancelBtnTap: () {},
+              ),
+            );
+          });
     });
   }
 
+  TextEditingController tec = TextEditingController(text: '');
+
   @override
   Widget build(BuildContext context) {
+    Table table = Table(
+      border: TableBorder.all(),
+      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+      defaultColumnWidth: const FixedColumnWidth(80),
+      children: [
+        TableRow(children: [
+          buildItem("1", Colors.redAccent),
+          buildItem("2", Colors.orangeAccent),
+          buildItem("3", Colors.yellowAccent),
+          buildItem("4", Colors.greenAccent)
+        ]),
+        TableRow(children: [
+          buildItem("5", Colors.greenAccent),
+          buildItem("6", Colors.yellowAccent),
+          buildItem("7", Colors.orangeAccent),
+          buildItem("8", Colors.redAccent)
+        ])
+      ],
+    );
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -75,36 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
+      body: table,
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
@@ -112,4 +150,25 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  buildItem(String content, Color backgroundColor) {
+    return Container(
+      width: 100,
+      height: 100,
+      alignment: Alignment.center,
+      color: backgroundColor,
+      child: Text(content),
+    );
+  }
+}
+
+class RenameDialog extends AlertDialog {
+  RenameDialog({super.key, required Widget contentWidget})
+      : super(
+          content: contentWidget,
+          contentPadding: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+              side: const BorderSide(color: Colors.blue, width: 3)),
+        );
 }
