@@ -3,17 +3,14 @@ import 'dart:io';
 import 'dart:typed_data';
 
 class NetworkManager {
-  // 单例模式固定格式
   NetworkManager._();
   Socket? _socket;
   Stream<List<int>>? _streams;
   final int _minMsgByteLen = 16;
   Uint8List _cacheData = Uint8List(0);
 
-  // 单例模式固定格式
   static NetworkManager? _instance;
 
-  // 单例模式固定格式
   static NetworkManager getInstance() {
     if (_instance == null) {
       _instance = NetworkManager._();
