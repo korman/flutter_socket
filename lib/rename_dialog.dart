@@ -11,7 +11,8 @@ class RenameDialogContent extends StatefulWidget {
   VoidCallback okBtnTap;
   TextEditingController vc;
   RenameDialogContent(
-      {required this.title,
+      {super.key,
+      required this.title,
       this.cancelBtnTitle = "Cancel",
       this.okBtnTitle = "Ok",
       required this.cancelBtnTap,
@@ -19,12 +20,19 @@ class RenameDialogContent extends StatefulWidget {
       required this.vc});
 
   @override
-  _RenameDialogContentState createState() => _RenameDialogContentState();
+  State<RenameDialogContent> createState() => _RenameDialogContentState();
 }
 
 class _RenameDialogContentState extends State<RenameDialogContent> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print("build");
+
     return Container(
         margin: const EdgeInsets.only(top: 20),
         height: 200,
@@ -68,7 +76,7 @@ class _RenameDialogContentState extends State<RenameDialogContent> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      FlatButton(
+                      TextButton(
                         onPressed: () {
                           widget.vc.text = "";
                           widget.cancelBtnTap();
@@ -76,7 +84,8 @@ class _RenameDialogContentState extends State<RenameDialogContent> {
                         },
                         child: Text(
                           widget.cancelBtnTitle,
-                          style: TextStyle(fontSize: 22, color: Colors.blue),
+                          style:
+                              const TextStyle(fontSize: 22, color: Colors.blue),
                         ),
                       ),
                       Container(
@@ -85,7 +94,7 @@ class _RenameDialogContentState extends State<RenameDialogContent> {
                         color: Colors.blue,
                         height: btnHeight - borderWidth - borderWidth,
                       ),
-                      FlatButton(
+                      TextButton(
                           onPressed: () {
                             widget.okBtnTap();
                             Navigator.of(context).pop();
@@ -93,7 +102,8 @@ class _RenameDialogContentState extends State<RenameDialogContent> {
                           },
                           child: Text(
                             widget.okBtnTitle,
-                            style: TextStyle(fontSize: 22, color: Colors.blue),
+                            style: const TextStyle(
+                                fontSize: 22, color: Colors.blue),
                           )),
                     ],
                   ),

@@ -8,6 +8,7 @@ class NetworkManager {
   Stream<List<int>>? _streams;
   final int _minMsgByteLen = 16;
   Uint8List _cacheData = Uint8List(0);
+  Map<int, Function> _msgCallback = Map();
 
   static NetworkManager? _instance;
 
@@ -43,6 +44,11 @@ class NetworkManager {
     });
   }
 
+  bool registerMsgHandler(int msgId, Function f) {
+    _msgCallback[msgId] = f;
+    return true;
+  }
+
   void onError(Object obj, StackTrace st) {
     print('出错了');
   }
@@ -66,20 +72,22 @@ class NetworkManager {
 
       var msgId = byteData.getInt64(8);
 
-      print(msgId);
-      print(msgLen);
+      var msgHandler = _msgCallback[msgId];
+
+      if (msgHandler == null) {
+        return;
+      }
 
       int totalLen = _minMsgByteLen + msgLen;
 
-      var pbList;
+      var pbList = Uint8List(0);
       if (msgLen > 0) {
         pbList = _cacheData.sublist(_minMsgByteLen, totalLen);
       }
 
       _cacheData = _cacheData.sublist(totalLen, _cacheData.length);
 
-      var sayReq = SayReq.fromBuffer(pbList);
-      print(sayReq.text);
+      msgHandler(pbList);
     }
   }
 

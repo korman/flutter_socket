@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'rename_dialog.dart';
 import 'network.dart';
+import 'package:flutter_socket/pb/conn.pb.dart';
 
 void main() async {
   NetworkManager.getInstance().start("127.0.0.1", 9898);
@@ -52,6 +53,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  @override
+  void initState() {
+    NetworkManager.getInstance().registerMsgHandler(1, (byteData) {
+      var sayReq = SayReq.fromBuffer(byteData);
+      print(sayReq.text);
+    });
+    super.initState();
+  }
+
   void _incrementCounter() {
     setState(() {
       showDialog(
