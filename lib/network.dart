@@ -48,8 +48,6 @@ class NetworkManager {
   void onData(List<int> newData) {
     _cacheData = Uint8List.fromList(_cacheData + newData);
 
-    print('来消息了');
-
     while (_cacheData.length >= _minMsgByteLen) {
       var byteData = _cacheData.buffer.asByteData();
       var msgLen = byteData.getInt64(0);
@@ -77,18 +75,6 @@ class NetworkManager {
 
       msgHandler(pbList);
     }
-  }
-
-  // 添加数据
-  void add(dynamic data) {
-    if (!dataStack.contains(data)) {
-      dataStack.add(data);
-    }
-  }
-
-  // 移除数据
-  void remove(dynamic data) {
-    dataStack.remove(data);
   }
 
   bool sendMsgToServer(int msgId, Uint8List msgData) {
