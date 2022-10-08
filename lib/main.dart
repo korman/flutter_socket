@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'rename_dialog.dart';
 import 'network.dart';
 import 'package:flutter_socket/pb/conn.pb.dart';
+import 'package:flutter_socket/pb/cs_logic.pb.dart';
 
 void main() async {
   NetworkManager.getInstance().start("127.0.0.1", 9898);
@@ -66,6 +67,12 @@ class _MyHomePageState extends State<MyHomePage> {
         print("发送失败");
       }
     });
+
+    NetworkManager.getInstance().registerMsgHandler(2, (byteData) {
+      RegisterReply reply = RegisterReply.fromBuffer(byteData);
+      print(reply.result);
+    });
+
     super.initState();
   }
 
@@ -82,6 +89,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   print(
                     "输入框中的文字为:${tec.text}",
                   );
+
+                  RegisterReq req = RegisterReq(name: tec.text, pass: '123456');
+                  var writeBuffer = req.writeToBuffer();
+
+                  if (!NetworkManager.getInstance()
+                      .sendMsgToServer(2, writeBuffer)) {
+                    print("发送失败");
+                  }
                 },
                 vc: tec,
                 cancelBtnTap: () {},
