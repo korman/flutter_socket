@@ -29,18 +29,6 @@ class NetworkManager {
       if (_streams != null) {
         _streams!.listen(onData, onError: onError, onDone: onDone);
       }
-
-      SayReq req = SayReq(text: '压脉带');
-      var writeBuffer = req.writeToBuffer();
-
-      ByteData bydata = ByteData(16);
-      bydata.setUint64(0, writeBuffer.length);
-      bydata.setUint64(8, 1);
-
-      var msg = bydata.buffer.asUint8List() + writeBuffer;
-      if (_socket != null) {
-        _socket!.add(msg);
-      }
     });
   }
 
@@ -101,5 +89,18 @@ class NetworkManager {
   // 移除数据
   void remove(dynamic data) {
     dataStack.remove(data);
+  }
+
+  bool sendMsgToServer(int msgId, Uint8List msgData) {
+    ByteData bydata = ByteData(16);
+    bydata.setUint64(0, msgData.length);
+    bydata.setUint64(8, msgId);
+
+    var msg = bydata.buffer.asUint8List() + msgData;
+    if (_socket != null) {
+      _socket!.add(msg);
+    }
+
+    return true;
   }
 }

@@ -58,6 +58,13 @@ class _MyHomePageState extends State<MyHomePage> {
     NetworkManager.getInstance().registerMsgHandler(1, (byteData) {
       var sayReq = SayReq.fromBuffer(byteData);
       print(sayReq.text);
+
+      SayReq req = SayReq(text: 'Yes!Im Alive.');
+      var writeBuffer = req.writeToBuffer();
+
+      if (!NetworkManager.getInstance().sendMsgToServer(1, writeBuffer)) {
+        print("发送失败");
+      }
     });
     super.initState();
   }
@@ -141,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class RenameDialog extends AlertDialog {
-  RenameDialog({required Widget contentWidget})
+  RenameDialog({super.key, required Widget contentWidget})
       : super(
           content: contentWidget,
           contentPadding: EdgeInsets.zero,
