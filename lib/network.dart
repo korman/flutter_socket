@@ -7,9 +7,7 @@ class NetworkManager {
   NetworkManager._();
   Socket? _socket;
   Stream<List<int>>? _streams;
-  final int _msgCodeByteLen = 8;
-  int _msgByteLen = 8;
-  int _minMsgByteLen = 16;
+  final int _minMsgByteLen = 16;
   Uint8List _cacheData = Uint8List(0);
 
   // 单例模式固定格式
