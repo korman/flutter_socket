@@ -7,6 +7,10 @@ class NetworkManager {
   NetworkManager._();
   Socket? socket;
   Stream<List<int>>? streams;
+  final int msgCodeByteLen = 8;
+  int msgByteLen = 8;
+  int minMsgByteLen = 16;
+  Uint8List _cacheData = Uint8List(0);
 
   // 单例模式固定格式
   static NetworkManager? _instance;
@@ -55,18 +59,36 @@ class NetworkManager {
     print('On Done');
   }
 
-  void onData(List<int> data) {
-    print('来消息了');
-    var cacheData = Int8List.fromList(data);
-    var byteData = cacheData.buffer.asByteData();
-    var msgLen = byteData.getInt64(0);
-    print(msgLen);
-    var msgId = byteData.getInt64(8);
-    print(msgId);
-    var msg = cacheData.sublist(16);
-    var sayReq = SayReq.fromBuffer(msg);
+  void onData(List<int> newData) {
+    _cacheData = Uint8List.fromList(_cacheData + newData);
 
-    print(sayReq.text);
+    print('来消息了');
+
+    while (_cacheData.length >= minMsgByteLen) {
+      var byteData = _cacheData.buffer.asByteData();
+      var msgLen = byteData.getInt64(0);
+
+      if (_cacheData.length < msgLen + 8) {
+        return;
+      }
+
+      var msgId = byteData.getInt64(8);
+
+      print(msgId);
+      print(msgLen);
+
+      int totalLen = minMsgByteLen + msgLen;
+
+      var pbList;
+      if (msgLen > 0) {
+        pbList = _cacheData.sublist(minMsgByteLen, totalLen);
+      }
+
+      _cacheData = _cacheData.sublist(totalLen, _cacheData.length);
+
+      var sayReq = SayReq.fromBuffer(pbList);
+      print(sayReq.text);
+    }
   }
 
   // 添加数据
