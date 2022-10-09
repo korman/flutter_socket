@@ -37,6 +37,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Table _table = Table();
+
   @override
   void initState() {
     NetworkManager.getInstance().registerMsgHandler(1, (byteData) {
@@ -64,12 +66,21 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void updateTables(int x, int y) {
+    _table = Table(
+      border: TableBorder.all(),
+      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+      defaultColumnWidth: const FixedColumnWidth(80),
+      children: widget._tables,
+    );
+
     for (int yy = 0; yy < y; yy++) {
-      TableRow row = const TableRow();
+      List<Widget> children = [];
       for (int xx = 0; xx < x; xx++) {
         Widget w = buildItem("ffffff", Colors.white);
-        row.children!.add(w);
+        children.add(w);
       }
+
+      TableRow row = TableRow(children: children);
 
       widget._tables.add(row);
     }
@@ -109,18 +120,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Table table = Table(
-      border: TableBorder.all(),
-      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-      defaultColumnWidth: const FixedColumnWidth(80),
-      children: widget._tables,
-    );
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: table,
+      body: _table,
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
