@@ -8,40 +8,23 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-
 @$core.Deprecated('Use otherLockNodeDescriptor instead')
 const OtherLockNode$json = const {
   '1': 'OtherLockNode',
   '2': const [
-    const {
-      '1': 'lockNode',
-      '3': 1,
-      '4': 3,
-      '5': 11,
-      '6': '.server.Node',
-      '10': 'lockNode'
-    },
+    const {'1': 'lockNode', '3': 1, '4': 3, '5': 11, '6': '.server.Node', '10': 'lockNode'},
   ],
 };
 
 /// Descriptor for `OtherLockNode`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List otherLockNodeDescriptor = $convert.base64Decode(
-    'Cg1PdGhlckxvY2tOb2RlEigKCGxvY2tOb2RlGAEgAygLMgwuc2VydmVyLk5vZGVSCGxvY2tOb2Rl');
+final $typed_data.Uint8List otherLockNodeDescriptor = $convert.base64Decode('Cg1PdGhlckxvY2tOb2RlEigKCGxvY2tOb2RlGAEgAygLMgwuc2VydmVyLk5vZGVSCGxvY2tOb2Rl');
 @$core.Deprecated('Use otherInputTextDescriptor instead')
 const OtherInputText$json = const {
   '1': 'OtherInputText',
   '2': const [
-    const {
-      '1': 'inputText',
-      '3': 1,
-      '4': 3,
-      '5': 11,
-      '6': '.server.InputText',
-      '10': 'inputText'
-    },
+    const {'1': 'inputText', '3': 1, '4': 3, '5': 11, '6': '.server.InputText', '10': 'inputText'},
   ],
 };
 
 /// Descriptor for `OtherInputText`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List otherInputTextDescriptor = $convert.base64Decode(
-    'Cg5PdGhlcklucHV0VGV4dBIvCglpbnB1dFRleHQYASADKAsyES5zZXJ2ZXIuSW5wdXRUZXh0UglpbnB1dFRleHQ=');
+final $typed_data.Uint8List otherInputTextDescriptor = $convert.base64Decode('Cg5PdGhlcklucHV0VGV4dBIvCglpbnB1dFRleHQYASADKAsyES5zZXJ2ZXIuSW5wdXRUZXh0UglpbnB1dFRleHQ=');
