@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
       RegisterReply reply = RegisterReply.fromBuffer(byteData);
       if (reply.result == RegisterResult.REG_SUCCEEDED) {
         setState(() {
-          updateTables(3, 10);
+          updateTables();
         });
       }
     });
@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
   }
 
-  void updateTables(int x, int y) {
+  void updateTables() {
     _table = Table(
       border: TableBorder.all(),
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
@@ -73,9 +73,9 @@ class _MyHomePageState extends State<MyHomePage> {
       children: widget._tables,
     );
 
-    for (int yy = 0; yy < y; yy++) {
+    for (int yy = 0; yy < 10; yy++) {
       List<Widget> children = [];
-      for (int xx = 0; xx < x; xx++) {
+      for (int xx = 0; xx < 3; xx++) {
         Widget w = buildItem("ffffff", Colors.white);
         children.add(w);
       }
