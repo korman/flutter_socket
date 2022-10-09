@@ -133,3 +133,64 @@ class InputText extends $pb.GeneratedMessage {
   Node ensureInputNode() => $_ensure(1);
 }
 
+class MapInfo extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MapInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'width', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'height', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  MapInfo._() : super();
+  factory MapInfo({
+    $core.int? width,
+    $core.int? height,
+  }) {
+    final _result = create();
+    if (width != null) {
+      _result.width = width;
+    }
+    if (height != null) {
+      _result.height = height;
+    }
+    return _result;
+  }
+  factory MapInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MapInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MapInfo clone() => MapInfo()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MapInfo copyWith(void Function(MapInfo) updates) => super.copyWith((message) => updates(message as MapInfo)) as MapInfo; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MapInfo create() => MapInfo._();
+  MapInfo createEmptyInstance() => create();
+  static $pb.PbList<MapInfo> createRepeated() => $pb.PbList<MapInfo>();
+  @$core.pragma('dart2js:noInline')
+  static MapInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MapInfo>(create);
+  static MapInfo? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get width => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set width($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasWidth() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearWidth() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.int get height => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set height($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasHeight() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearHeight() => clearField(2);
+}
+

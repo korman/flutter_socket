@@ -11,47 +11,6 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'global_define.pb.dart' as $0;
 
-class OtherLockNode extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'OtherLockNode', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
-    ..pc<$0.Node>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lockNode', $pb.PbFieldType.PM, protoName: 'lockNode', subBuilder: $0.Node.create)
-    ..hasRequiredFields = false
-  ;
-
-  OtherLockNode._() : super();
-  factory OtherLockNode({
-    $core.Iterable<$0.Node>? lockNode,
-  }) {
-    final _result = create();
-    if (lockNode != null) {
-      _result.lockNode.addAll(lockNode);
-    }
-    return _result;
-  }
-  factory OtherLockNode.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory OtherLockNode.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  OtherLockNode clone() => OtherLockNode()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  OtherLockNode copyWith(void Function(OtherLockNode) updates) => super.copyWith((message) => updates(message as OtherLockNode)) as OtherLockNode; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static OtherLockNode create() => OtherLockNode._();
-  OtherLockNode createEmptyInstance() => create();
-  static $pb.PbList<OtherLockNode> createRepeated() => $pb.PbList<OtherLockNode>();
-  @$core.pragma('dart2js:noInline')
-  static OtherLockNode getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OtherLockNode>(create);
-  static OtherLockNode? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.List<$0.Node> get lockNode => $_getList(0);
-}
-
 class OtherInputText extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'OtherInputText', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
     ..pc<$0.InputText>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'inputText', $pb.PbFieldType.PM, protoName: 'inputText', subBuilder: $0.InputText.create)
@@ -91,5 +50,62 @@ class OtherInputText extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(1)
   $core.List<$0.InputText> get inputText => $_getList(0);
+}
+
+class UpdateNodes extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateNodes', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
+    ..aOM<$0.MapInfo>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'map', subBuilder: $0.MapInfo.create)
+    ..pc<$0.Node>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lockNodes', $pb.PbFieldType.PM, protoName: 'lockNodes', subBuilder: $0.Node.create)
+    ..hasRequiredFields = false
+  ;
+
+  UpdateNodes._() : super();
+  factory UpdateNodes({
+    $0.MapInfo? map,
+    $core.Iterable<$0.Node>? lockNodes,
+  }) {
+    final _result = create();
+    if (map != null) {
+      _result.map = map;
+    }
+    if (lockNodes != null) {
+      _result.lockNodes.addAll(lockNodes);
+    }
+    return _result;
+  }
+  factory UpdateNodes.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateNodes.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateNodes clone() => UpdateNodes()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateNodes copyWith(void Function(UpdateNodes) updates) => super.copyWith((message) => updates(message as UpdateNodes)) as UpdateNodes; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UpdateNodes create() => UpdateNodes._();
+  UpdateNodes createEmptyInstance() => create();
+  static $pb.PbList<UpdateNodes> createRepeated() => $pb.PbList<UpdateNodes>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateNodes getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateNodes>(create);
+  static UpdateNodes? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.MapInfo get map => $_getN(0);
+  @$pb.TagNumber(1)
+  set map($0.MapInfo v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasMap() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMap() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.MapInfo ensureMap() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.List<$0.Node> get lockNodes => $_getList(1);
 }
 
