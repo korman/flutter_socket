@@ -18,7 +18,7 @@ class NetworkManager {
     return _instance!;
   }
 
-  var dataStack = [];
+  var _dataStack = [];
 
   void start(String ip, int port) async {
     Socket.connect('127.0.0.1', 9898).then((Socket sock) {

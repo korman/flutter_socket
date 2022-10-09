@@ -13,8 +13,8 @@ class RenameDialogContent extends StatefulWidget {
   RenameDialogContent(
       {super.key,
       required this.title,
-      this.cancelBtnTitle = "Cancel",
-      this.okBtnTitle = "Ok",
+      this.cancelBtnTitle = "取消",
+      this.okBtnTitle = "确认",
       required this.cancelBtnTap,
       required this.okBtnTap,
       required this.vc});

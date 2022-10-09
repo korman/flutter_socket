@@ -97,10 +97,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 title: "请输入新的家庭名称",
                 okBtnTap: () {
                   print(
-                    "输入框中的文字为:${tec.text}",
+                    "输入框中的文字为:${_textController.text}",
                   );
 
-                  RegisterReq req = RegisterReq(name: tec.text, pass: '123456');
+                  RegisterReq req =
+                      RegisterReq(name: _textController.text, pass: '123456');
                   var writeBuffer = req.writeToBuffer();
 
                   if (!NetworkManager.getInstance()
@@ -108,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     print("发送失败");
                   }
                 },
-                vc: tec,
+                vc: _textController,
                 cancelBtnTap: () {},
               ),
             );
@@ -116,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  TextEditingController tec = TextEditingController(text: '');
+  TextEditingController _textController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
