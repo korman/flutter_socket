@@ -1,4 +1,3 @@
-import 'package:flutter_socket/pb/conn.pb.dart';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -22,7 +21,7 @@ class NetworkManager {
   var dataStack = [];
 
   void start(String ip, int port) async {
-    Socket.connect('127.0.0.1', 9898).then((Socket sock) {
+    Socket.connect('10.30.20.211', 9898).then((Socket sock) {
       _socket = sock;
       _streams = sock.asBroadcastStream();
 

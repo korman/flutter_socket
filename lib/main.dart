@@ -30,13 +30,13 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -48,6 +48,7 @@ class MyHomePage extends StatefulWidget {
   // always marked "final".
 
   final String title;
+  List<TableRow> _tables = [];
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -70,10 +71,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
     NetworkManager.getInstance().registerMsgHandler(2, (byteData) {
       RegisterReply reply = RegisterReply.fromBuffer(byteData);
-      print(reply.result);
+      if (reply.result == RegisterResult.REG_SUCCEEDED) {
+        setState(() {
+          updateTables(3, 10);
+        });
+      }
     });
 
     super.initState();
+  }
+
+  void updateTables(int x, int y) {
+    for (int yy = 0; yy < y; yy++) {
+      TableRow row = const TableRow();
+      for (int xx = 0; xx < x; xx++) {
+        Widget w = buildItem("ffffff", Colors.white);
+        row.children!.add(w);
+      }
+
+      widget._tables.add(row);
+    }
   }
 
   void _incrementCounter() {
@@ -114,20 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
       border: TableBorder.all(),
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       defaultColumnWidth: const FixedColumnWidth(80),
-      children: [
-        TableRow(children: [
-          buildItem("1", Colors.redAccent),
-          buildItem("2", Colors.orangeAccent),
-          buildItem("3", Colors.yellowAccent),
-          buildItem("4", Colors.greenAccent)
-        ]),
-        TableRow(children: [
-          buildItem("5", Colors.greenAccent),
-          buildItem("6", Colors.yellowAccent),
-          buildItem("7", Colors.orangeAccent),
-          buildItem("8", Colors.redAccent)
-        ])
-      ],
+      children: widget._tables,
     );
 
     // This method is rerun every time setState is called, for instance as done
@@ -151,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  buildItem(String content, Color backgroundColor) {
+  Widget buildItem(String content, Color backgroundColor) {
     return Container(
       width: 100,
       height: 100,
