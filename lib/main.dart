@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_socket/pb/global_define.pb.dart';
+import 'package:flutter_socket/pb/sc_logic.pb.dart';
 import 'rename_dialog.dart';
 import 'network.dart';
 import 'package:flutter_socket/pb/conn.pb.dart';
@@ -31,6 +33,7 @@ class MyHomePage extends StatefulWidget {
 
   final String title;
   List<TableRow> _tables = [];
+  MapInfo _mapInfo = MapInfo(width: 0, height: 0);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -56,10 +59,16 @@ class _MyHomePageState extends State<MyHomePage> {
     NetworkManager.getInstance().registerMsgHandler(2, (byteData) {
       RegisterReply reply = RegisterReply.fromBuffer(byteData);
       if (reply.result == RegisterResult.REG_SUCCEEDED) {
-        setState(() {
-          updateTables();
-        });
+        print("注册成功");
       }
+    });
+
+    NetworkManager.getInstance().registerMsgHandler(9, (byteData) {
+      UpdateNodes updateInfo = UpdateNodes.fromBuffer(byteData);
+      widget._mapInfo = updateInfo.map;
+      setState(() {
+        updateTables();
+      });
     });
 
     super.initState();
@@ -73,9 +82,12 @@ class _MyHomePageState extends State<MyHomePage> {
       children: widget._tables,
     );
 
-    for (int yy = 0; yy < 10; yy++) {
+    if (widget._mapInfo.width == 0 || widget._mapInfo.height == 0) {
+      return;
+    }
+    for (int yy = 0; yy < widget._mapInfo.height; yy++) {
       List<Widget> children = [];
-      for (int xx = 0; xx < 3; xx++) {
+      for (int xx = 0; xx < widget._mapInfo.width; xx++) {
         Widget w = buildItem("ffffff", Colors.white);
         children.add(w);
       }
