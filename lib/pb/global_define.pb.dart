@@ -13,6 +13,7 @@ class Node extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Node', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'x', $pb.PbFieldType.O3)
     ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'y', $pb.PbFieldType.O3)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'text')
     ..hasRequiredFields = false
   ;
 
@@ -20,6 +21,7 @@ class Node extends $pb.GeneratedMessage {
   factory Node({
     $core.int? x,
     $core.int? y,
+    $core.String? text,
   }) {
     final _result = create();
     if (x != null) {
@@ -27,6 +29,9 @@ class Node extends $pb.GeneratedMessage {
     }
     if (y != null) {
       _result.y = y;
+    }
+    if (text != null) {
+      _result.text = text;
     }
     return _result;
   }
@@ -68,6 +73,15 @@ class Node extends $pb.GeneratedMessage {
   $core.bool hasY() => $_has(1);
   @$pb.TagNumber(2)
   void clearY() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get text => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set text($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasText() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearText() => clearField(3);
 }
 
 class InputText extends $pb.GeneratedMessage {
