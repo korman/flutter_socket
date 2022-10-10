@@ -67,6 +67,14 @@ class _MyHomePageState extends State<MyHomePage> {
     NetworkManager.getInstance().registerMsgHandler(11, (byteData) {
       InitMapInfo initInfo = InitMapInfo.fromBuffer(byteData);
       widget._mapInfo = initInfo.info;
+
+      for (int i = 0; i < widget._mapInfo.width * widget._mapInfo.height; i++) {
+        int y = i % widget._mapInfo.width;
+        int x = i - y * widget._mapInfo.width;
+        Node node = Node(x: x, y: y, text: '', state: LockStatus.COMMON_NODE);
+
+        widget._nodes.add(node);
+      }
       setState(() {
         updateTables();
       });
@@ -87,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _table = Table(
       border: TableBorder.all(),
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-      defaultColumnWidth: const FixedColumnWidth(80),
+      defaultColumnWidth: const FixedColumnWidth(125),
       children: widget._tables,
     );
 
@@ -97,7 +105,15 @@ class _MyHomePageState extends State<MyHomePage> {
     for (int yy = 0; yy < widget._mapInfo.height; yy++) {
       List<Widget> children = [];
       for (int xx = 0; xx < widget._mapInfo.width; xx++) {
-        Widget w = buildItem("ffffff", Colors.white);
+        var text = widget._nodes[yy * widget._mapInfo.width + xx].text;
+        var color = Colors.white;
+
+        if (widget._nodes[yy * widget._mapInfo.width + xx].state ==
+            LockStatus.LOCKED_NODE) {
+          color = Colors.blueGrey;
+        }
+
+        Widget w = buildItem(text, color);
         children.add(w);
       }
 
