@@ -22,9 +22,9 @@ final $typed_data.Uint8List initMapInfoDescriptor = $convert.base64Decode('CgtJb
 const UpdateNodes$json = const {
   '1': 'UpdateNodes',
   '2': const [
-    const {'1': 'lockNodes', '3': 1, '4': 3, '5': 11, '6': '.server.Node', '10': 'lockNodes'},
+    const {'1': 'nodes', '3': 1, '4': 3, '5': 11, '6': '.server.Node', '10': 'nodes'},
   ],
 };
 
 /// Descriptor for `UpdateNodes`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List updateNodesDescriptor = $convert.base64Decode('CgtVcGRhdGVOb2RlcxIqCglsb2NrTm9kZXMYASADKAsyDC5zZXJ2ZXIuTm9kZVIJbG9ja05vZGVz');
+final $typed_data.Uint8List updateNodesDescriptor = $convert.base64Decode('CgtVcGRhdGVOb2RlcxIiCgVub2RlcxgBIAMoCzIMLnNlcnZlci5Ob2RlUgVub2Rlcw==');

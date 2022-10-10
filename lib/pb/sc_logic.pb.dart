@@ -62,17 +62,17 @@ class InitMapInfo extends $pb.GeneratedMessage {
 
 class UpdateNodes extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateNodes', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
-    ..pc<$0.Node>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lockNodes', $pb.PbFieldType.PM, protoName: 'lockNodes', subBuilder: $0.Node.create)
+    ..pc<$0.Node>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nodes', $pb.PbFieldType.PM, subBuilder: $0.Node.create)
     ..hasRequiredFields = false
   ;
 
   UpdateNodes._() : super();
   factory UpdateNodes({
-    $core.Iterable<$0.Node>? lockNodes,
+    $core.Iterable<$0.Node>? nodes,
   }) {
     final _result = create();
-    if (lockNodes != null) {
-      _result.lockNodes.addAll(lockNodes);
+    if (nodes != null) {
+      _result.nodes.addAll(nodes);
     }
     return _result;
   }
@@ -98,6 +98,6 @@ class UpdateNodes extends $pb.GeneratedMessage {
   static UpdateNodes? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$0.Node> get lockNodes => $_getList(0);
+  $core.List<$0.Node> get nodes => $_getList(0);
 }
 
