@@ -64,9 +64,17 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     });
 
-    NetworkManager.getInstance().registerMsgHandler(9, (byteData) {
-      UpdateNodes updateInfo = UpdateNodes.fromBuffer(byteData);
-      widget._mapInfo = updateInfo.map;
+    NetworkManager.getInstance().registerMsgHandler(11, (byteData) {
+      InitMapInfo initInfo = InitMapInfo.fromBuffer(byteData);
+      widget._mapInfo = initInfo.info;
+      setState(() {
+        updateTables();
+      });
+    });
+
+    NetworkManager.getInstance().registerMsgHandler(12, (byteData) {
+      UpdateNodes updateNodes = UpdateNodes.fromBuffer(byteData);
+
       setState(() {
         updateTables();
       });
