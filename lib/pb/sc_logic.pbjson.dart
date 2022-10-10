@@ -8,24 +8,23 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-@$core.Deprecated('Use otherInputTextDescriptor instead')
-const OtherInputText$json = const {
-  '1': 'OtherInputText',
+@$core.Deprecated('Use initMapInfoDescriptor instead')
+const InitMapInfo$json = const {
+  '1': 'InitMapInfo',
   '2': const [
-    const {'1': 'inputText', '3': 1, '4': 3, '5': 11, '6': '.server.InputText', '10': 'inputText'},
+    const {'1': 'info', '3': 1, '4': 1, '5': 11, '6': '.server.MapInfo', '10': 'info'},
   ],
 };
 
-/// Descriptor for `OtherInputText`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List otherInputTextDescriptor = $convert.base64Decode('Cg5PdGhlcklucHV0VGV4dBIvCglpbnB1dFRleHQYASADKAsyES5zZXJ2ZXIuSW5wdXRUZXh0UglpbnB1dFRleHQ=');
+/// Descriptor for `InitMapInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List initMapInfoDescriptor = $convert.base64Decode('CgtJbml0TWFwSW5mbxIjCgRpbmZvGAEgASgLMg8uc2VydmVyLk1hcEluZm9SBGluZm8=');
 @$core.Deprecated('Use updateNodesDescriptor instead')
 const UpdateNodes$json = const {
   '1': 'UpdateNodes',
   '2': const [
-    const {'1': 'map', '3': 1, '4': 1, '5': 11, '6': '.server.MapInfo', '10': 'map'},
-    const {'1': 'lockNodes', '3': 2, '4': 3, '5': 11, '6': '.server.Node', '10': 'lockNodes'},
+    const {'1': 'lockNodes', '3': 1, '4': 3, '5': 11, '6': '.server.Node', '10': 'lockNodes'},
   ],
 };
 
 /// Descriptor for `UpdateNodes`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List updateNodesDescriptor = $convert.base64Decode('CgtVcGRhdGVOb2RlcxIhCgNtYXAYASABKAsyDy5zZXJ2ZXIuTWFwSW5mb1IDbWFwEioKCWxvY2tOb2RlcxgCIAMoCzIMLnNlcnZlci5Ob2RlUglsb2NrTm9kZXM=');
+final $typed_data.Uint8List updateNodesDescriptor = $convert.base64Decode('CgtVcGRhdGVOb2RlcxIqCglsb2NrTm9kZXMYASADKAsyDC5zZXJ2ZXIuTm9kZVIJbG9ja05vZGVz');

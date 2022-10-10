@@ -11,63 +11,66 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'global_define.pb.dart' as $0;
 
-class OtherInputText extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'OtherInputText', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
-    ..pc<$0.InputText>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'inputText', $pb.PbFieldType.PM, protoName: 'inputText', subBuilder: $0.InputText.create)
+class InitMapInfo extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitMapInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
+    ..aOM<$0.MapInfo>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'info', subBuilder: $0.MapInfo.create)
     ..hasRequiredFields = false
   ;
 
-  OtherInputText._() : super();
-  factory OtherInputText({
-    $core.Iterable<$0.InputText>? inputText,
+  InitMapInfo._() : super();
+  factory InitMapInfo({
+    $0.MapInfo? info,
   }) {
     final _result = create();
-    if (inputText != null) {
-      _result.inputText.addAll(inputText);
+    if (info != null) {
+      _result.info = info;
     }
     return _result;
   }
-  factory OtherInputText.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory OtherInputText.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory InitMapInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory InitMapInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  OtherInputText clone() => OtherInputText()..mergeFromMessage(this);
+  InitMapInfo clone() => InitMapInfo()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  OtherInputText copyWith(void Function(OtherInputText) updates) => super.copyWith((message) => updates(message as OtherInputText)) as OtherInputText; // ignore: deprecated_member_use
+  InitMapInfo copyWith(void Function(InitMapInfo) updates) => super.copyWith((message) => updates(message as InitMapInfo)) as InitMapInfo; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static OtherInputText create() => OtherInputText._();
-  OtherInputText createEmptyInstance() => create();
-  static $pb.PbList<OtherInputText> createRepeated() => $pb.PbList<OtherInputText>();
+  static InitMapInfo create() => InitMapInfo._();
+  InitMapInfo createEmptyInstance() => create();
+  static $pb.PbList<InitMapInfo> createRepeated() => $pb.PbList<InitMapInfo>();
   @$core.pragma('dart2js:noInline')
-  static OtherInputText getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OtherInputText>(create);
-  static OtherInputText? _defaultInstance;
+  static InitMapInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<InitMapInfo>(create);
+  static InitMapInfo? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$0.InputText> get inputText => $_getList(0);
+  $0.MapInfo get info => $_getN(0);
+  @$pb.TagNumber(1)
+  set info($0.MapInfo v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasInfo() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearInfo() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.MapInfo ensureInfo() => $_ensure(0);
 }
 
 class UpdateNodes extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateNodes', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
-    ..aOM<$0.MapInfo>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'map', subBuilder: $0.MapInfo.create)
-    ..pc<$0.Node>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lockNodes', $pb.PbFieldType.PM, protoName: 'lockNodes', subBuilder: $0.Node.create)
+    ..pc<$0.Node>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lockNodes', $pb.PbFieldType.PM, protoName: 'lockNodes', subBuilder: $0.Node.create)
     ..hasRequiredFields = false
   ;
 
   UpdateNodes._() : super();
   factory UpdateNodes({
-    $0.MapInfo? map,
     $core.Iterable<$0.Node>? lockNodes,
   }) {
     final _result = create();
-    if (map != null) {
-      _result.map = map;
-    }
     if (lockNodes != null) {
       _result.lockNodes.addAll(lockNodes);
     }
@@ -95,17 +98,6 @@ class UpdateNodes extends $pb.GeneratedMessage {
   static UpdateNodes? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.MapInfo get map => $_getN(0);
-  @$pb.TagNumber(1)
-  set map($0.MapInfo v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasMap() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearMap() => clearField(1);
-  @$pb.TagNumber(1)
-  $0.MapInfo ensureMap() => $_ensure(0);
-
-  @$pb.TagNumber(2)
-  $core.List<$0.Node> get lockNodes => $_getList(1);
+  $core.List<$0.Node> get lockNodes => $_getList(0);
 }
 
