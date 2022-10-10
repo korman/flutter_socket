@@ -34,6 +34,7 @@ class MyHomePage extends StatefulWidget {
   final String title;
   List<TableRow> _tables = [];
   MapInfo _mapInfo = MapInfo(width: 0, height: 0);
+  List<Node> _nodes = [];
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
