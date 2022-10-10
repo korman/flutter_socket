@@ -9,11 +9,16 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'global_define.pbenum.dart';
+
+export 'global_define.pbenum.dart';
+
 class Node extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Node', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'x', $pb.PbFieldType.O3)
     ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'y', $pb.PbFieldType.O3)
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'text')
+    ..e<LockStatus>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'state', $pb.PbFieldType.OE, defaultOrMaker: LockStatus.COMMON_NODE, valueOf: LockStatus.valueOf, enumValues: LockStatus.values)
     ..hasRequiredFields = false
   ;
 
@@ -22,6 +27,7 @@ class Node extends $pb.GeneratedMessage {
     $core.int? x,
     $core.int? y,
     $core.String? text,
+    LockStatus? state,
   }) {
     final _result = create();
     if (x != null) {
@@ -32,6 +38,9 @@ class Node extends $pb.GeneratedMessage {
     }
     if (text != null) {
       _result.text = text;
+    }
+    if (state != null) {
+      _result.state = state;
     }
     return _result;
   }
@@ -82,6 +91,15 @@ class Node extends $pb.GeneratedMessage {
   $core.bool hasText() => $_has(2);
   @$pb.TagNumber(3)
   void clearText() => clearField(3);
+
+  @$pb.TagNumber(4)
+  LockStatus get state => $_getN(3);
+  @$pb.TagNumber(4)
+  set state(LockStatus v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasState() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearState() => clearField(4);
 }
 
 class InputText extends $pb.GeneratedMessage {
