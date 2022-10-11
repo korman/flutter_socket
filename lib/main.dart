@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_socket/pb/global_define.pb.dart';
+import 'package:flutter_socket/pb/global_define.pbenum.dart';
 import 'package:flutter_socket/pb/sc_logic.pb.dart';
 import 'rename_dialog.dart';
 import 'network.dart';
@@ -82,6 +83,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
     NetworkManager.getInstance().registerMsgHandler(12, (byteData) {
       UpdateNodes updateNodes = UpdateNodes.fromBuffer(byteData);
+
+      updateNodes.nodes.forEach((element) {
+        int x = element.x;
+        int y = element.y;
+
+        widget._nodes[y * widget._mapInfo.width + x].state =
+            LockStatus.LOCKED_NODE;
+      });
 
       setState(() {
         updateTables();
