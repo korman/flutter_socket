@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_socket/pb/global_define.pb.dart';
-import 'package:flutter_socket/pb/global_define.pbenum.dart';
 import 'package:flutter_socket/pb/sc_logic.pb.dart';
+import 'package:flutter_socket/table_item.dart';
 import 'rename_dialog.dart';
 import 'network.dart';
 import 'package:flutter_socket/pb/conn.pb.dart';
@@ -66,6 +66,13 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     });
 
+    NetworkManager.getInstance().registerMsgHandler(3, (byteData) {
+      LockNodeReply reply = LockNodeReply.fromBuffer(byteData);
+      if (reply.result == LockResult.LOCK_SUCCEEDED) {
+        print("锁定成功");
+      }
+    });
+
     NetworkManager.getInstance().registerMsgHandler(11, (byteData) {
       InitMapInfo initInfo = InitMapInfo.fromBuffer(byteData);
       widget._mapInfo = initInfo.info;
@@ -119,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
           color = Colors.black;
         }
 
-        Widget w = buildItem(text, color);
+        Widget w = buildItem(text, color, xx, yy);
         children.add(w);
       }
 
@@ -175,14 +182,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget buildItem(String content, Color backgroundColor) {
-    return Container(
-      width: 100,
-      height: 100,
-      alignment: Alignment.center,
-      color: backgroundColor,
-      child: Text(content),
-    );
+  Widget buildItem(String content, Color backgroundColor, int x, int y) {
+    return TableItem(color: backgroundColor, text: content, x: x, y: y);
   }
 }
 
