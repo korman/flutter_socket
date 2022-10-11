@@ -43,6 +43,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Table _table = Table();
+  TextEditingController _textController = TextEditingController(text: '');
 
   @override
   void initState() {
@@ -84,13 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
     NetworkManager.getInstance().registerMsgHandler(12, (byteData) {
       UpdateNodes updateNodes = UpdateNodes.fromBuffer(byteData);
 
-      updateNodes.nodes.forEach((element) {
-        int x = element.x;
-        int y = element.y;
-
-        widget._nodes[y * widget._mapInfo.width + x].state =
-            LockStatus.LOCKED_NODE;
-      });
+      widget._nodes = updateNodes.nodes;
 
       setState(() {
         updateTables();
@@ -108,6 +103,8 @@ class _MyHomePageState extends State<MyHomePage> {
       children: widget._tables,
     );
 
+    widget._tables.clear();
+
     if (widget._mapInfo.width == 0 || widget._mapInfo.height == 0) {
       return;
     }
@@ -119,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
         if (widget._nodes[yy * widget._mapInfo.width + xx].state ==
             LockStatus.LOCKED_NODE) {
-          color = Colors.blueGrey;
+          color = Colors.black;
         }
 
         Widget w = buildItem(text, color);
@@ -162,8 +159,6 @@ class _MyHomePageState extends State<MyHomePage> {
           });
     });
   }
-
-  TextEditingController _textController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
