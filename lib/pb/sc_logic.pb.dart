@@ -14,16 +14,21 @@ import 'global_define.pb.dart' as $0;
 class InitMapInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitMapInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
     ..aOM<$0.MapInfo>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'info', subBuilder: $0.MapInfo.create)
+    ..pc<$0.Node>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'currentNodes', $pb.PbFieldType.PM, protoName: 'currentNodes', subBuilder: $0.Node.create)
     ..hasRequiredFields = false
   ;
 
   InitMapInfo._() : super();
   factory InitMapInfo({
     $0.MapInfo? info,
+    $core.Iterable<$0.Node>? currentNodes,
   }) {
     final _result = create();
     if (info != null) {
       _result.info = info;
+    }
+    if (currentNodes != null) {
+      _result.currentNodes.addAll(currentNodes);
     }
     return _result;
   }
@@ -58,6 +63,9 @@ class InitMapInfo extends $pb.GeneratedMessage {
   void clearInfo() => clearField(1);
   @$pb.TagNumber(1)
   $0.MapInfo ensureInfo() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.List<$0.Node> get currentNodes => $_getList(1);
 }
 
 class UpdateNodes extends $pb.GeneratedMessage {

@@ -32,17 +32,6 @@ const Node$json = const {
 
 /// Descriptor for `Node`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List nodeDescriptor = $convert.base64Decode('CgROb2RlEgwKAXgYASABKAVSAXgSDAoBeRgCIAEoBVIBeRISCgR0ZXh0GAMgASgJUgR0ZXh0EigKBXN0YXRlGAQgASgOMhIuc2VydmVyLkxvY2tTdGF0dXNSBXN0YXRl');
-@$core.Deprecated('Use inputTextDescriptor instead')
-const InputText$json = const {
-  '1': 'InputText',
-  '2': const [
-    const {'1': 'text', '3': 1, '4': 1, '5': 9, '10': 'text'},
-    const {'1': 'inputNode', '3': 2, '4': 1, '5': 11, '6': '.server.Node', '10': 'inputNode'},
-  ],
-};
-
-/// Descriptor for `InputText`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List inputTextDescriptor = $convert.base64Decode('CglJbnB1dFRleHQSEgoEdGV4dBgBIAEoCVIEdGV4dBIqCglpbnB1dE5vZGUYAiABKAsyDC5zZXJ2ZXIuTm9kZVIJaW5wdXROb2Rl');
 @$core.Deprecated('Use mapInfoDescriptor instead')
 const MapInfo$json = const {
   '1': 'MapInfo',

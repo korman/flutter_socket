@@ -78,17 +78,22 @@ class RegisterReq extends $pb.GeneratedMessage {
 
 class RegisterReply extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RegisterReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
-    ..e<RegisterResult>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result', $pb.PbFieldType.OE, defaultOrMaker: RegisterResult.REG_SUCCEEDED, valueOf: RegisterResult.valueOf, enumValues: RegisterResult.values)
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'errorMessage', protoName: 'errorMessage')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token')
+    ..e<RegisterResult>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result', $pb.PbFieldType.OE, defaultOrMaker: RegisterResult.REG_SUCCEEDED, valueOf: RegisterResult.valueOf, enumValues: RegisterResult.values)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'errorMessage', protoName: 'errorMessage')
     ..hasRequiredFields = false
   ;
 
   RegisterReply._() : super();
   factory RegisterReply({
+    $core.String? token,
     RegisterResult? result,
     $core.String? errorMessage,
   }) {
     final _result = create();
+    if (token != null) {
+      _result.token = token;
+    }
     if (result != null) {
       _result.result = result;
     }
@@ -119,35 +124,49 @@ class RegisterReply extends $pb.GeneratedMessage {
   static RegisterReply? _defaultInstance;
 
   @$pb.TagNumber(1)
-  RegisterResult get result => $_getN(0);
+  $core.String get token => $_getSZ(0);
   @$pb.TagNumber(1)
-  set result(RegisterResult v) { setField(1, v); }
+  set token($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasResult() => $_has(0);
+  $core.bool hasToken() => $_has(0);
   @$pb.TagNumber(1)
-  void clearResult() => clearField(1);
+  void clearToken() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get errorMessage => $_getSZ(1);
+  RegisterResult get result => $_getN(1);
   @$pb.TagNumber(2)
-  set errorMessage($core.String v) { $_setString(1, v); }
+  set result(RegisterResult v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasErrorMessage() => $_has(1);
+  $core.bool hasResult() => $_has(1);
   @$pb.TagNumber(2)
-  void clearErrorMessage() => clearField(2);
+  void clearResult() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get errorMessage => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set errorMessage($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasErrorMessage() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearErrorMessage() => clearField(3);
 }
 
 class LockNodeReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LockNodeReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
-    ..aOM<$0.Node>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lockNode', protoName: 'lockNode', subBuilder: $0.Node.create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token')
+    ..aOM<$0.Node>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lockNode', protoName: 'lockNode', subBuilder: $0.Node.create)
     ..hasRequiredFields = false
   ;
 
   LockNodeReq._() : super();
   factory LockNodeReq({
+    $core.String? token,
     $0.Node? lockNode,
   }) {
     final _result = create();
+    if (token != null) {
+      _result.token = token;
+    }
     if (lockNode != null) {
       _result.lockNode = lockNode;
     }
@@ -175,35 +194,54 @@ class LockNodeReq extends $pb.GeneratedMessage {
   static LockNodeReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.Node get lockNode => $_getN(0);
+  $core.String get token => $_getSZ(0);
   @$pb.TagNumber(1)
-  set lockNode($0.Node v) { setField(1, v); }
+  set token($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasLockNode() => $_has(0);
+  $core.bool hasToken() => $_has(0);
   @$pb.TagNumber(1)
-  void clearLockNode() => clearField(1);
-  @$pb.TagNumber(1)
-  $0.Node ensureLockNode() => $_ensure(0);
+  void clearToken() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $0.Node get lockNode => $_getN(1);
+  @$pb.TagNumber(2)
+  set lockNode($0.Node v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasLockNode() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLockNode() => clearField(2);
+  @$pb.TagNumber(2)
+  $0.Node ensureLockNode() => $_ensure(1);
 }
 
 class LockNodeReply extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LockNodeReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
-    ..e<LockResult>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result', $pb.PbFieldType.OE, defaultOrMaker: LockResult.LOCK_SUCCEEDED, valueOf: LockResult.valueOf, enumValues: LockResult.values)
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'errorMessage', protoName: 'errorMessage')
+    ..aOM<$0.Node>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lockedNode', protoName: 'lockedNode', subBuilder: $0.Node.create)
+    ..e<LockResult>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result', $pb.PbFieldType.OE, defaultOrMaker: LockResult.LOCK_SUCCEEDED, valueOf: LockResult.valueOf, enumValues: LockResult.values)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'errorMessage', protoName: 'errorMessage')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token')
     ..hasRequiredFields = false
   ;
 
   LockNodeReply._() : super();
   factory LockNodeReply({
+    $0.Node? lockedNode,
     LockResult? result,
     $core.String? errorMessage,
+    $core.String? token,
   }) {
     final _result = create();
+    if (lockedNode != null) {
+      _result.lockedNode = lockedNode;
+    }
     if (result != null) {
       _result.result = result;
     }
     if (errorMessage != null) {
       _result.errorMessage = errorMessage;
+    }
+    if (token != null) {
+      _result.token = token;
     }
     return _result;
   }
@@ -229,37 +267,62 @@ class LockNodeReply extends $pb.GeneratedMessage {
   static LockNodeReply? _defaultInstance;
 
   @$pb.TagNumber(1)
-  LockResult get result => $_getN(0);
+  $0.Node get lockedNode => $_getN(0);
   @$pb.TagNumber(1)
-  set result(LockResult v) { setField(1, v); }
+  set lockedNode($0.Node v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasResult() => $_has(0);
+  $core.bool hasLockedNode() => $_has(0);
   @$pb.TagNumber(1)
-  void clearResult() => clearField(1);
+  void clearLockedNode() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.Node ensureLockedNode() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $core.String get errorMessage => $_getSZ(1);
+  LockResult get result => $_getN(1);
   @$pb.TagNumber(2)
-  set errorMessage($core.String v) { $_setString(1, v); }
+  set result(LockResult v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasErrorMessage() => $_has(1);
+  $core.bool hasResult() => $_has(1);
   @$pb.TagNumber(2)
-  void clearErrorMessage() => clearField(2);
+  void clearResult() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get errorMessage => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set errorMessage($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasErrorMessage() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearErrorMessage() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get token => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set token($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasToken() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearToken() => clearField(4);
 }
 
 class InputTextReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InputTextReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
-    ..aOM<$0.InputText>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'inputText', protoName: 'inputText', subBuilder: $0.InputText.create)
+    ..aOM<$0.Node>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'inputNode', protoName: 'inputNode', subBuilder: $0.Node.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token')
     ..hasRequiredFields = false
   ;
 
   InputTextReq._() : super();
   factory InputTextReq({
-    $0.InputText? inputText,
+    $0.Node? inputNode,
+    $core.String? token,
   }) {
     final _result = create();
-    if (inputText != null) {
-      _result.inputText = inputText;
+    if (inputNode != null) {
+      _result.inputNode = inputNode;
+    }
+    if (token != null) {
+      _result.token = token;
     }
     return _result;
   }
@@ -285,35 +348,54 @@ class InputTextReq extends $pb.GeneratedMessage {
   static InputTextReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.InputText get inputText => $_getN(0);
+  $0.Node get inputNode => $_getN(0);
   @$pb.TagNumber(1)
-  set inputText($0.InputText v) { setField(1, v); }
+  set inputNode($0.Node v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasInputText() => $_has(0);
+  $core.bool hasInputNode() => $_has(0);
   @$pb.TagNumber(1)
-  void clearInputText() => clearField(1);
+  void clearInputNode() => clearField(1);
   @$pb.TagNumber(1)
-  $0.InputText ensureInputText() => $_ensure(0);
+  $0.Node ensureInputNode() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get token => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set token($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasToken() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearToken() => clearField(2);
 }
 
 class InputTextReply extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InputTextReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
-    ..e<LockResult>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result', $pb.PbFieldType.OE, defaultOrMaker: LockResult.LOCK_SUCCEEDED, valueOf: LockResult.valueOf, enumValues: LockResult.values)
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'errorMessage', protoName: 'errorMessage')
+    ..aOM<$0.Node>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'inputedNode', protoName: 'inputedNode', subBuilder: $0.Node.create)
+    ..e<LockResult>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result', $pb.PbFieldType.OE, defaultOrMaker: LockResult.LOCK_SUCCEEDED, valueOf: LockResult.valueOf, enumValues: LockResult.values)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'errorMessage', protoName: 'errorMessage')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token')
     ..hasRequiredFields = false
   ;
 
   InputTextReply._() : super();
   factory InputTextReply({
+    $0.Node? inputedNode,
     LockResult? result,
     $core.String? errorMessage,
+    $core.String? token,
   }) {
     final _result = create();
+    if (inputedNode != null) {
+      _result.inputedNode = inputedNode;
+    }
     if (result != null) {
       _result.result = result;
     }
     if (errorMessage != null) {
       _result.errorMessage = errorMessage;
+    }
+    if (token != null) {
+      _result.token = token;
     }
     return _result;
   }
@@ -339,21 +421,41 @@ class InputTextReply extends $pb.GeneratedMessage {
   static InputTextReply? _defaultInstance;
 
   @$pb.TagNumber(1)
-  LockResult get result => $_getN(0);
+  $0.Node get inputedNode => $_getN(0);
   @$pb.TagNumber(1)
-  set result(LockResult v) { setField(1, v); }
+  set inputedNode($0.Node v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasResult() => $_has(0);
+  $core.bool hasInputedNode() => $_has(0);
   @$pb.TagNumber(1)
-  void clearResult() => clearField(1);
+  void clearInputedNode() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.Node ensureInputedNode() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $core.String get errorMessage => $_getSZ(1);
+  LockResult get result => $_getN(1);
   @$pb.TagNumber(2)
-  set errorMessage($core.String v) { $_setString(1, v); }
+  set result(LockResult v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasErrorMessage() => $_has(1);
+  $core.bool hasResult() => $_has(1);
   @$pb.TagNumber(2)
-  void clearErrorMessage() => clearField(2);
+  void clearResult() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get errorMessage => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set errorMessage($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasErrorMessage() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearErrorMessage() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get token => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set token($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasToken() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearToken() => clearField(4);
 }
 

@@ -13,11 +13,12 @@ const InitMapInfo$json = const {
   '1': 'InitMapInfo',
   '2': const [
     const {'1': 'info', '3': 1, '4': 1, '5': 11, '6': '.server.MapInfo', '10': 'info'},
+    const {'1': 'currentNodes', '3': 2, '4': 3, '5': 11, '6': '.server.Node', '10': 'currentNodes'},
   ],
 };
 
 /// Descriptor for `InitMapInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List initMapInfoDescriptor = $convert.base64Decode('CgtJbml0TWFwSW5mbxIjCgRpbmZvGAEgASgLMg8uc2VydmVyLk1hcEluZm9SBGluZm8=');
+final $typed_data.Uint8List initMapInfoDescriptor = $convert.base64Decode('CgtJbml0TWFwSW5mbxIjCgRpbmZvGAEgASgLMg8uc2VydmVyLk1hcEluZm9SBGluZm8SMAoMY3VycmVudE5vZGVzGAIgAygLMgwuc2VydmVyLk5vZGVSDGN1cnJlbnROb2Rlcw==');
 @$core.Deprecated('Use updateNodesDescriptor instead')
 const UpdateNodes$json = const {
   '1': 'UpdateNodes',

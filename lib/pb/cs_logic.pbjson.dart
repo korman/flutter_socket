@@ -45,52 +45,59 @@ final $typed_data.Uint8List registerReqDescriptor = $convert.base64Decode('CgtSZ
 const RegisterReply$json = const {
   '1': 'RegisterReply',
   '2': const [
-    const {'1': 'result', '3': 1, '4': 1, '5': 14, '6': '.server.RegisterResult', '10': 'result'},
-    const {'1': 'errorMessage', '3': 2, '4': 1, '5': 9, '10': 'errorMessage'},
+    const {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
+    const {'1': 'result', '3': 2, '4': 1, '5': 14, '6': '.server.RegisterResult', '10': 'result'},
+    const {'1': 'errorMessage', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
 
 /// Descriptor for `RegisterReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List registerReplyDescriptor = $convert.base64Decode('Cg1SZWdpc3RlclJlcGx5Ei4KBnJlc3VsdBgBIAEoDjIWLnNlcnZlci5SZWdpc3RlclJlc3VsdFIGcmVzdWx0EiIKDGVycm9yTWVzc2FnZRgCIAEoCVIMZXJyb3JNZXNzYWdl');
+final $typed_data.Uint8List registerReplyDescriptor = $convert.base64Decode('Cg1SZWdpc3RlclJlcGx5EhQKBXRva2VuGAEgASgJUgV0b2tlbhIuCgZyZXN1bHQYAiABKA4yFi5zZXJ2ZXIuUmVnaXN0ZXJSZXN1bHRSBnJlc3VsdBIiCgxlcnJvck1lc3NhZ2UYAyABKAlSDGVycm9yTWVzc2FnZQ==');
 @$core.Deprecated('Use lockNodeReqDescriptor instead')
 const LockNodeReq$json = const {
   '1': 'LockNodeReq',
   '2': const [
-    const {'1': 'lockNode', '3': 1, '4': 1, '5': 11, '6': '.server.Node', '10': 'lockNode'},
+    const {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
+    const {'1': 'lockNode', '3': 2, '4': 1, '5': 11, '6': '.server.Node', '10': 'lockNode'},
   ],
 };
 
 /// Descriptor for `LockNodeReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List lockNodeReqDescriptor = $convert.base64Decode('CgtMb2NrTm9kZVJlcRIoCghsb2NrTm9kZRgBIAEoCzIMLnNlcnZlci5Ob2RlUghsb2NrTm9kZQ==');
+final $typed_data.Uint8List lockNodeReqDescriptor = $convert.base64Decode('CgtMb2NrTm9kZVJlcRIUCgV0b2tlbhgBIAEoCVIFdG9rZW4SKAoIbG9ja05vZGUYAiABKAsyDC5zZXJ2ZXIuTm9kZVIIbG9ja05vZGU=');
 @$core.Deprecated('Use lockNodeReplyDescriptor instead')
 const LockNodeReply$json = const {
   '1': 'LockNodeReply',
   '2': const [
-    const {'1': 'result', '3': 1, '4': 1, '5': 14, '6': '.server.LockResult', '10': 'result'},
-    const {'1': 'errorMessage', '3': 2, '4': 1, '5': 9, '10': 'errorMessage'},
+    const {'1': 'lockedNode', '3': 1, '4': 1, '5': 11, '6': '.server.Node', '10': 'lockedNode'},
+    const {'1': 'result', '3': 2, '4': 1, '5': 14, '6': '.server.LockResult', '10': 'result'},
+    const {'1': 'errorMessage', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
+    const {'1': 'token', '3': 4, '4': 1, '5': 9, '10': 'token'},
   ],
 };
 
 /// Descriptor for `LockNodeReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List lockNodeReplyDescriptor = $convert.base64Decode('Cg1Mb2NrTm9kZVJlcGx5EioKBnJlc3VsdBgBIAEoDjISLnNlcnZlci5Mb2NrUmVzdWx0UgZyZXN1bHQSIgoMZXJyb3JNZXNzYWdlGAIgASgJUgxlcnJvck1lc3NhZ2U=');
+final $typed_data.Uint8List lockNodeReplyDescriptor = $convert.base64Decode('Cg1Mb2NrTm9kZVJlcGx5EiwKCmxvY2tlZE5vZGUYASABKAsyDC5zZXJ2ZXIuTm9kZVIKbG9ja2VkTm9kZRIqCgZyZXN1bHQYAiABKA4yEi5zZXJ2ZXIuTG9ja1Jlc3VsdFIGcmVzdWx0EiIKDGVycm9yTWVzc2FnZRgDIAEoCVIMZXJyb3JNZXNzYWdlEhQKBXRva2VuGAQgASgJUgV0b2tlbg==');
 @$core.Deprecated('Use inputTextReqDescriptor instead')
 const InputTextReq$json = const {
   '1': 'InputTextReq',
   '2': const [
-    const {'1': 'inputText', '3': 1, '4': 1, '5': 11, '6': '.server.InputText', '10': 'inputText'},
+    const {'1': 'inputNode', '3': 1, '4': 1, '5': 11, '6': '.server.Node', '10': 'inputNode'},
+    const {'1': 'token', '3': 2, '4': 1, '5': 9, '10': 'token'},
   ],
 };
 
 /// Descriptor for `InputTextReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List inputTextReqDescriptor = $convert.base64Decode('CgxJbnB1dFRleHRSZXESLwoJaW5wdXRUZXh0GAEgASgLMhEuc2VydmVyLklucHV0VGV4dFIJaW5wdXRUZXh0');
+final $typed_data.Uint8List inputTextReqDescriptor = $convert.base64Decode('CgxJbnB1dFRleHRSZXESKgoJaW5wdXROb2RlGAEgASgLMgwuc2VydmVyLk5vZGVSCWlucHV0Tm9kZRIUCgV0b2tlbhgCIAEoCVIFdG9rZW4=');
 @$core.Deprecated('Use inputTextReplyDescriptor instead')
 const InputTextReply$json = const {
   '1': 'InputTextReply',
   '2': const [
-    const {'1': 'result', '3': 1, '4': 1, '5': 14, '6': '.server.LockResult', '10': 'result'},
-    const {'1': 'errorMessage', '3': 2, '4': 1, '5': 9, '10': 'errorMessage'},
+    const {'1': 'inputedNode', '3': 1, '4': 1, '5': 11, '6': '.server.Node', '10': 'inputedNode'},
+    const {'1': 'result', '3': 2, '4': 1, '5': 14, '6': '.server.LockResult', '10': 'result'},
+    const {'1': 'errorMessage', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
+    const {'1': 'token', '3': 4, '4': 1, '5': 9, '10': 'token'},
   ],
 };
 
 /// Descriptor for `InputTextReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List inputTextReplyDescriptor = $convert.base64Decode('Cg5JbnB1dFRleHRSZXBseRIqCgZyZXN1bHQYASABKA4yEi5zZXJ2ZXIuTG9ja1Jlc3VsdFIGcmVzdWx0EiIKDGVycm9yTWVzc2FnZRgCIAEoCVIMZXJyb3JNZXNzYWdl');
+final $typed_data.Uint8List inputTextReplyDescriptor = $convert.base64Decode('Cg5JbnB1dFRleHRSZXBseRIuCgtpbnB1dGVkTm9kZRgBIAEoCzIMLnNlcnZlci5Ob2RlUgtpbnB1dGVkTm9kZRIqCgZyZXN1bHQYAiABKA4yEi5zZXJ2ZXIuTG9ja1Jlc3VsdFIGcmVzdWx0EiIKDGVycm9yTWVzc2FnZRgDIAEoCVIMZXJyb3JNZXNzYWdlEhQKBXRva2VuGAQgASgJUgV0b2tlbg==');
