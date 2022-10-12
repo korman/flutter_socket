@@ -60,6 +60,15 @@ class _HomepageState extends State<Homepage> {
       }
     });
 
+    NetworkManager.getInstance().registerMsgHandler(4, (byteData) {
+      InputTextReply reply = InputTextReply.fromBuffer(byteData);
+      if (reply.result != LockResult.LOCK_SUCCEEDED) {
+        print("输入失败");
+      }
+
+      print('输入成功');
+    });
+
     NetworkManager.getInstance().registerMsgHandler(11, (byteData) {
       InitMapInfo initInfo = InitMapInfo.fromBuffer(byteData);
       widget._mapInfo = initInfo.info;
@@ -110,7 +119,7 @@ class _HomepageState extends State<Homepage> {
 
         if (widget._nodes[yy * widget._mapInfo.width + xx].state ==
             LockStatus.LOCKED_NODE) {
-          color = Colors.black;
+          color = Colors.red;
         }
 
         Widget w = buildItem(text, color, xx, yy);
