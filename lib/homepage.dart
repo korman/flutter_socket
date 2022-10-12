@@ -1,6 +1,7 @@
 import 'package:flutter_socket/pb/sc_logic.pb.dart';
 import 'package:flutter_socket/table_item.dart';
 import 'package:flutter_socket/rename_dialog.dart';
+import 'package:flutter_socket/input_dialog.dart';
 import 'rename_dialog.dart';
 import 'package:flutter_socket/pb/global_define.pb.dart';
 import 'package:flutter_socket/pb/conn.pb.dart';
@@ -122,7 +123,7 @@ class _HomepageState extends State<Homepage> {
           context: context,
           builder: (context) {
             return RenameDialog(
-              contentWidget: RenameDialogContent(
+              contentWidget: InputDialog(
                 title: "请输入新的家庭名称",
                 okBtnTap: () {
                   print(
