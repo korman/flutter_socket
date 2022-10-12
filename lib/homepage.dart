@@ -26,6 +26,13 @@ class _HomepageState extends State<Homepage> {
   TextEditingController _textController = TextEditingController(text: '');
 
   @override
+  void reassemble() {
+    print("reassemble");
+
+    super.reassemble();
+  }
+
+  @override
   void initState() {
     NetworkManager.getInstance().registerMsgHandler(1, (byteData) {
       var sayReq = SayReq.fromBuffer(byteData);

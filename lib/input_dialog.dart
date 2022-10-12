@@ -13,8 +13,8 @@ class InputDialog extends StatefulWidget {
   InputDialog(
       {super.key,
       required this.title,
-      this.cancelBtnTitle = "Cancel",
-      this.okBtnTitle = "Ok",
+      this.cancelBtnTitle = "取消",
+      this.okBtnTitle = "确定",
       required this.cancelBtnTap,
       required this.okBtnTap,
       required this.vc});

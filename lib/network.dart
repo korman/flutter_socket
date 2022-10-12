@@ -64,6 +64,7 @@ class NetworkManager {
       int totalLen = _minMsgByteLen + msgLen;
 
       var pbList = Uint8List(0);
+
       if (msgLen > 0) {
         pbList = _cacheData.sublist(_minMsgByteLen, totalLen);
       }

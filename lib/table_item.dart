@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_socket/pb/cs_logic.pb.dart';
 import 'package:flutter_socket/pb/global_define.pb.dart';
@@ -16,15 +18,19 @@ class TableItem extends StatefulWidget {
   final Color color;
   final String text;
 
+  void processLocked() {}
+
   @override
-  State<TableItem> createState() => TableItemState();
+  State<TableItem> createState() {
+    return TableItemState();
+  }
 }
 
 class TableItemState extends State<TableItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
+      onDoubleTap: () {
         Node node = Node(x: widget.x, y: widget.y);
         LockNodeReq req = LockNodeReq();
         req.lockNode = node;
