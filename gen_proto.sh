@@ -1,1 +1,1 @@
-protoc --dart_out=./lib ./pb/*.proto
+protoc --dart_out=./lib ./pb/gate/*.proto

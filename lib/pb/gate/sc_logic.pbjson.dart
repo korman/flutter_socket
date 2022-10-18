@@ -1,6 +1,6 @@
 ///
 //  Generated code. Do not modify.
-//  source: pb/sc_logic.proto
+//  source: pb/gate/sc_logic.proto
 //
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,deprecated_member_use_from_same_package,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
@@ -12,20 +12,20 @@ import 'dart:typed_data' as $typed_data;
 const InitMapInfo$json = const {
   '1': 'InitMapInfo',
   '2': const [
-    const {'1': 'info', '3': 1, '4': 1, '5': 11, '6': '.server.MapInfo', '10': 'info'},
-    const {'1': 'currentNodes', '3': 2, '4': 3, '5': 11, '6': '.server.Node', '10': 'currentNodes'},
+    const {'1': 'info', '3': 1, '4': 1, '5': 11, '6': '.gate_server.MapInfo', '10': 'info'},
+    const {'1': 'currentNodes', '3': 2, '4': 3, '5': 11, '6': '.gate_server.Node', '10': 'currentNodes'},
   ],
 };
 
 /// Descriptor for `InitMapInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List initMapInfoDescriptor = $convert.base64Decode('CgtJbml0TWFwSW5mbxIjCgRpbmZvGAEgASgLMg8uc2VydmVyLk1hcEluZm9SBGluZm8SMAoMY3VycmVudE5vZGVzGAIgAygLMgwuc2VydmVyLk5vZGVSDGN1cnJlbnROb2Rlcw==');
+final $typed_data.Uint8List initMapInfoDescriptor = $convert.base64Decode('CgtJbml0TWFwSW5mbxIoCgRpbmZvGAEgASgLMhQuZ2F0ZV9zZXJ2ZXIuTWFwSW5mb1IEaW5mbxI1CgxjdXJyZW50Tm9kZXMYAiADKAsyES5nYXRlX3NlcnZlci5Ob2RlUgxjdXJyZW50Tm9kZXM=');
 @$core.Deprecated('Use updateNodesDescriptor instead')
 const UpdateNodes$json = const {
   '1': 'UpdateNodes',
   '2': const [
-    const {'1': 'nodes', '3': 1, '4': 3, '5': 11, '6': '.server.Node', '10': 'nodes'},
+    const {'1': 'nodes', '3': 1, '4': 3, '5': 11, '6': '.gate_server.Node', '10': 'nodes'},
   ],
 };
 
 /// Descriptor for `UpdateNodes`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List updateNodesDescriptor = $convert.base64Decode('CgtVcGRhdGVOb2RlcxIiCgVub2RlcxgBIAMoCzIMLnNlcnZlci5Ob2RlUgVub2Rlcw==');
+final $typed_data.Uint8List updateNodesDescriptor = $convert.base64Decode('CgtVcGRhdGVOb2RlcxInCgVub2RlcxgBIAMoCzIRLmdhdGVfc2VydmVyLk5vZGVSBW5vZGVz');

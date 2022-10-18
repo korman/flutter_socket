@@ -1,6 +1,6 @@
 ///
 //  Generated code. Do not modify.
-//  source: pb/sc_logic.proto
+//  source: pb/gate/sc_logic.proto
 //
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
@@ -12,7 +12,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import 'global_define.pb.dart' as $0;
 
 class InitMapInfo extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitMapInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitMapInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'gate_server'), createEmptyInstance: create)
     ..aOM<$0.MapInfo>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'info', subBuilder: $0.MapInfo.create)
     ..pc<$0.Node>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'currentNodes', $pb.PbFieldType.PM, protoName: 'currentNodes', subBuilder: $0.Node.create)
     ..hasRequiredFields = false
@@ -69,7 +69,7 @@ class InitMapInfo extends $pb.GeneratedMessage {
 }
 
 class UpdateNodes extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateNodes', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateNodes', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'gate_server'), createEmptyInstance: create)
     ..pc<$0.Node>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nodes', $pb.PbFieldType.PM, subBuilder: $0.Node.create)
     ..hasRequiredFields = false
   ;

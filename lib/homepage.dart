@@ -1,11 +1,11 @@
-import 'package:flutter_socket/pb/sc_logic.pb.dart';
+import 'package:flutter_socket/pb/gate/sc_logic.pb.dart';
 import 'package:flutter_socket/table_item.dart';
 import 'package:flutter_socket/rename_dialog.dart';
 import 'package:flutter_socket/input_dialog.dart';
 import 'rename_dialog.dart';
-import 'package:flutter_socket/pb/global_define.pb.dart';
-import 'package:flutter_socket/pb/conn.pb.dart';
-import 'package:flutter_socket/pb/cs_logic.pb.dart';
+import 'package:flutter_socket/pb/gate/global_define.pb.dart';
+import 'package:flutter_socket/pb/gate/conn.pb.dart';
+import 'package:flutter_socket/pb/gate/cs_logic.pb.dart';
 import 'package:flutter/material.dart';
 import 'network.dart';
 
