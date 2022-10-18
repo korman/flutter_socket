@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_socket/pb/global_define.pb.dart';
+import 'package:flutter_socket/pb/gate/global_define.pb.dart';
 
 class MapModel extends ChangeNotifier {
   MapInfo _mapInfo = MapInfo();
